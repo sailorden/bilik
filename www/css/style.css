@@ -559,9 +559,8 @@ img.grayscale {
     border: 1px solid #0089ba;
     height: 99px;
     width: 99px;
-    position: absolute;
-    left: 35.6%;
-    top: 6.5%;
+    display: block;
+    margin: 0 auto;
     z-index: -100;
     
 }
@@ -871,11 +870,11 @@ img.grayscale {
     font-size: 20px !important;
 }
 .onLoading{
-    -webkit-transform: translate3d(0%, 150%, 0px) scale(1);
-    -moz-transform: translate3d(0%,150%, 0px) scale(1);
-    -o-transform: translate3d(0%,150%, 0px) scale(1);
-    transform: translate3d(0%,150%, 0px) scale(1);
-    -ms-transform: translate3d(0%,150%, 0px) scale(1);
+    -webkit-transform: translate3d(0%, 80%, 0px) scale(1);
+    -moz-transform: translate3d(0%,80%, 0px) scale(1);
+    -o-transform: translate3d(0%,80%, 0px) scale(1);
+    transform: translate3d(0%,80%, 0px) scale(1);
+    -ms-transform: translate3d(0%,80%, 0px) scale(1);
 }
 #mfPreviewBar{
     display: none;

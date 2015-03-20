@@ -1404,7 +1404,7 @@ $scope.deleteSearchs = function(){
     $scope.newCard = function(){
         var text = $scope.searching.searchText;
         $scope.addCard(text);
-       
+
     };
     $scope.addLot = function(){
         $scope.customOffer.show = false;
@@ -1794,8 +1794,8 @@ function fuzzy_match(str,pattern){
       //$scope.keepTouching = false;
       var newNode = document.createElement('div');
       $timeout(function(){
-          newNode.className = newNode.className + "disapearImage disapearAnimation ";
-          var element = document.getElementById("loadingImage")
+          newNode.className = newNode.className + "disapearImage  disapearAnimation";
+          var element = document.getElementById("tinerLoading")
           if(element)
           element.appendChild(newNode); 
           $timeout(function(){newNode.remove()}, 4000);

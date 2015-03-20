@@ -58,14 +58,14 @@
         <!--<ion-slide-box on-slide-changed="slideChanged($index)" show-pager="false">
             <ion-slide>-->
                  <ion-content class="first-screen" scroll="false" style="background-image: url('img/gif2.gif'); background-size: cover; background-position: center center" >
-                   <img class="inCenter" src="img/B-bilik-logo-2.png" style="top:9%; right: 20%; position: absolute; width: 40%">
-                   <div class="row inLarge" style="color :#FFF; font-size: large;top:22%;left: 20%; position: absolute;font-size: medium ">
+                   <img class="inCenter" src="img/B-bilik-logo-2.png" style="display: block; margin: 10% auto; margin-bottom: 5%; width: 40%">
+                   <div class="row inLarge" style="color :#FFF; font-size: large;text-align: center;font-size: medium ">
                        <div class="col" >
                         <span> Sign in and start buying</span>
                        </div>
                    </div>
                    
-                   <div class="padding" style="opacity: 0">
+                   <!--<div class="padding" style="opacity: 0">
                        <div class="list list-inset" style="margin-top: 90%;">
                         <label class="item item-input" ng-style="nameStyle">
                             <input type="text" placeholder="First and last name">
@@ -80,11 +80,13 @@
                         <button class="button button-small button-dark " ng-style="continueStyle"  >Continuar</button>
                         <i class="icon ion-information-circled " ng-style="helpStyle" ng-click="changeToRegister()"> No tengo usuario </i>
                         <i class="icon ion-information-circled " ng-style="noHelpStyle" ng-click="changeToLogin()"> Tengo usuario </i>
-                    </div>
-                     <div class="button-bar bar-dark"  style="position: absolute; top:86.5%;width: 94%; right: 3%">
-                          <a class="button icon  icon-left ion-social-facebook" ng-show="init10" ng-click="fblogin()" style="background: #3b5998;border-top-left-radius: 2px; border-bottom-left-radius: 2px; " ><span>Continuar con facebook</span></a>
+                    </div>-->
+                     <div class="button-bar bar-dark"  style="width: 90%; margin: 0 auto; height: 65%;">
+                          <a class="button icon  icon-left ion-social-facebook"  ng-show="init10" ng-click="fblogin()" style="background: #3b5998;border-top-left-radius: 2px; border-bottom-left-radius: 2px; display: block !important; width: 90%; top: 85%; height: 0" ><span>Continuar con facebook</span></a>
                        </div>
-                     <i class="icon ion-ios7-information inCenter sampleShowHide" ng-show="init15" style="color: #FFF; position: absolute; top:95.5%; left: 0%"> No publicaremos nada en tu muro</i>
+                     <div style="display: block; margin: 0 auto; width: 75%">
+                         <i class="icon ion-ios7-information  sampleShowHide" ng-show="init15" style="color: #FFF; display: block; margin: 0 auto"> No publicaremos nada en tu muro</i>
+                     </div>
                 </ion-content>
             <!--</ion-slide>
             <ion-slide>
@@ -508,7 +510,7 @@
 
               <div class="row" id="loadingImage"  ontouch="onTouch()" onrelease="onRelease()" >
                   <div  class="col col-33 col-offset-33" ng-class="{elementDesanimation: desTouche==true && touche == false, keepTouched: touche == true && desTouche == false && keepTouching == true}">
-                      <div  ng-style="imageStyleTinder" ng-click="badConnection()" >
+                      <div  ng-style="imageStyleTinder" id="tinerLoading" ng-click="badConnection()" >
                       </div>
                   </div>
               </div>

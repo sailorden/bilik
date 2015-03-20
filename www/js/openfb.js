@@ -74,7 +74,7 @@ var openFB = (function() {
         }
       
         loginWindow = window.open(FB_LOGIN_URL + '?client_id=' + fbAppId + '&redirect_uri=' + oauthRedirectURL +
-            '&response_type=token&display=popup&scope=' + scope, '_blank', 'closebuttoncaption=Listo,presentationstyle=formsheet,location=no,hidden=yes');
+            '&response_type=token&display=popup&scope=' + scope, '_blank', 'closebuttoncaption=Listo,presentationstyle=formsheet,location=no');
         
         
         // If the app is running in Cordova, listen to URL changes in the InAppBrowser until we get a URL with an access_token
