@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="com.example.helloworld" version="1.0.0">
+  <name>Bilik the bursch</name>
+  <description>Sell and buy closer</description>
+  <author/>
+  <content src="index.html"/>
+  <preference name="AllowInlineMediaPlayback" value="false"/>
+  <preference name="BackupWebStorage" value="cloud"/>
+  <preference name="FadeSplashScreenDuration" value=".25"/>
+  <preference name="KeyboardDisplayRequiresUserAction" value="true"/>
+  <preference name="MediaPlaybackRequiresUserAction" value="false"/>
+  <preference name="SuppressesIncrementalRendering" value="false"/>
+  <preference name="TopActivityIndicator" value="gray"/>
+  <preference name="GapBetweenPages" value="0"/>
+  <preference name="PageLength" value="0"/>
+  <preference name="PaginationBreakingMode" value="page"/>
+  <preference name="PaginationMode" value="unpaginated"/>
+  <feature name="LocalStorage">
+    <param name="ios-package" value="CDVLocalStorage"/>
+  </feature>
+  <preference name="monaca:DisableCookie" value="false"/>
+  <preference name="monaca:targetFamilyiPhone" value="1"/>
+  <preference name="monaca:targetFamilyiPad" value="1"/>
+  <preference name="AutoHideSplashScreen" value="true"/>
+  <preference name="FadeSplashScreen" value="true"/>
+  <preference name="ShowSplashScreenSpinner" value="false"/>
+  <access origin="*"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="EnableViewportScale" value="false"/>
+  <preference name="monaca:MonacaBackendUrl" value="https://cloud.monaca.mobi/json-rpc/"/>
+  <preference name="monaca:MonacaBackendId" value="550614dc7e21939a1966c845"/>
+  <preference name="monaca:MonacaBackendApiKey" value="81f2bb1ee4e8bbf89978492294e71177726923c8420419649e067a54416f82f5"/>
+</widget>

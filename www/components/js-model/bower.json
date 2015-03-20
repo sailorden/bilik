@@ -1,0 +1,28 @@
+{
+  "name": "js-model",
+  "version": "0.11.0",
+  "description": "Micro library for dependency injection and inversion of control containers in node and browsers",
+  "license": "MIT",
+  "author": "Ben Pickles",
+  "main": "./js-model.js",
+  "homepage": "http://benpickles.github.io/js-model",
+  "repository": "h2non/js-model-bower",
+  "keywords": [
+    "model",
+    "backbone",
+    "models",
+    "data",
+    "relation",
+    "mapper",
+    "storage",
+    "persistence",
+    "localStorage"
+  ],
+  "ignore": [
+    "**/.*",
+    ".*",
+    "*.md",
+    ".gitignore",
+    ".npmignore"
+  ]
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" id="com.example.helloworld" version="1.0.0">
+  <name>Bilik the bursch</name>
+  <description>Hello World App</description>
+  <author/>
+  <access origin="*"/>
+  <preference name="loglevel" value="DEBUG"/>
+  <preference name="AndroidLaunchMode" value="singleTop"/>
+  <preference name="BackgroundColor" value="0xffffffff"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="ErrorUrl" value=""/>
+  <preference name="Fullscreen" value="false"/>
+  <preference name="KeepRunning" value="true"/>
+  <preference name="monaca:androidVersionCode" value="1"/>
+  <preference name="monaca:WebViewEngine" value="default"/>
+  <preference name="SplashScreen" value="screen"/>
+  <preference name="SplashScreenDelay" value="1000"/>
+  <preference name="Orientation" value="default"/>
+  <preference name="monaca:DisableCookie" value="false"/>
+  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
+  <feature name="App">
+    <param name="android-package" value="org.apache.cordova.App"/>
+  </feature>
+  <preference name="monaca:MonacaBackendUrl" value="https://cloud.monaca.mobi/json-rpc/"/>
+  <preference name="monaca:MonacaBackendId" value="550614dc7e21939a1966c845"/>
+  <preference name="monaca:MonacaBackendApiKey" value="81f2bb1ee4e8bbf89978492294e71177726923c8420419649e067a54416f82f5"/>
+</widget>

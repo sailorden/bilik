@@ -1,0 +1,35 @@
+{
+    "plugins": [
+        "mobi.monaca.plugins.Monaca",
+        "org.apache.cordova.splashscreen",
+        "mobi.monaca.plugins.MonacaBackend",
+        "org.apache.cordova.inappbrowser",
+        "org.apache.cordova.camera",
+        "org.apache.cordova.geolocation",
+        "org.apache.cordova.dialogs",
+        "mobi.monaca.plugins.Share",
+        "org.apache.cordova.file",
+        "plugin.push.nifty",
+        "org.apache.cordova.vibration",
+        "org.apache.cordova.statusbar",
+        "org.apache.cordova.device"
+    ],
+    "framework_version": "3.5",
+    "xcode_version": "5",
+    "cordova_version": "4.1",
+    "external_plugins": [
+
+    ],
+    "title-ja": "",
+    "title-en": "Bilik Tinder Firebase 2.0",
+    "description-ja": "",
+    "description-en": "",
+    "category": "User Template",
+    "platform": [
+        "android",
+        "ios",
+        "winrt",
+        "chrome"
+    ],
+    "name": "generated-1426447494-54a46390fd1734fb7696a3c7"
+}

@@ -1,0 +1,814 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Ionic App</title>
+    <script src="components/loader.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/ionic/release/js/ionic-angular.js"></script>
+    <script src="components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="components/js-model/js-model.js"></script> 
+    <script src="components/ionic/release/js/ionic.bundle.js"></script>
+    <script src="js/geolocation.js"></script>
+    <script src="js/models.js"></script>
+    
+    <script src="js/spring.js"></script>
+    <script src="components/collide/collide.js"></script>
+    <script src="js/ionic.tdcards.js"></script>
+    <script src="components/initial.js"></script>
+    <script src="js/services.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+    <script src=" https://geofire.firebaseapp.com/queryBuilder/js/vendor/rsvp.min.js"></script>
+   
+    <!-- GeoFire -->
+    <script src="https://cdn.firebase.com/libs/geofire/2.0.0/geofire.min.js"></script>
+    <script src="js/openfb.js"></script>
+    <script src="js/openml.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link  id="ionicId" href="components/ionic/release/css/ionic.css" rel="stylesheet">
+    <link id="styleId" rel="stylesheet" href="css/style.css">
+    <link id="tinderId" href="css/tinder.css" rel="stylesheet">
+    <link rel="stylesheet"  href=" http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link id="justIntro" href="https://fontastic.s3.amazonaws.com/wwoACYWqWFH9ZTsbKHYdAR/icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <link  rel="stylesheet" href="fonts/fonts.css">
+    <script type="text/javascript">
+    (function() {
+        var path = '//easy.myfonts.net/v2/js?sid=251566(font-family=Brandon+Printed+One)&key=kWqCN6LLwL',
+            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+            trial = document.createElement('script');
+        trial.type = 'text/javascript';
+        trial.async = true;
+        trial.src = protocol + path;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(trial);
+    })();
+</script>
+
+  </head>
+    <script>
+       openFB.init('675371589198569'); // Defaults to sessionStorage for storing the Facebook token
+       openML.init('6092');
+    </script>
+  <body ng-app="ionicApp"  >
+        <ion-nav-view animation="reverse" class="reverse"></ion-nav-view>
+    <script id="intro.html" type="text/ng-template" >
+        <!--<ion-slide-box on-slide-changed="slideChanged($index)" show-pager="false">
+            <ion-slide>-->
+                 <ion-content class="first-screen" scroll="false" style="background-image: url('img/gif2.gif'); background-size: cover; background-position: center center" >
+                   <img class="inCenter" src="img/B-bilik-logo-2.png" style="top:9%; right: 20%; position: absolute; width: 40%">
+                   <div class="row inLarge" style="color :#FFF; font-size: large;top:22%;left: 20%; position: absolute;font-size: medium ">
+                       <div class="col" >
+                        <span> Sign in and start buying</span>
+                       </div>
+                   </div>
+                   
+                   <div class="padding" style="opacity: 0">
+                       <div class="list list-inset" style="margin-top: 90%;">
+                        <label class="item item-input" ng-style="nameStyle">
+                            <input type="text" placeholder="First and last name">
+                          </label>
+                          <label class="item item-input">
+                            <input type="text" placeholder="Email">
+                          </label>
+                          <label class="item item-input" ">
+                            <input type="text" placeholder="Password"  >
+                          </label>
+                        </div>
+                        <button class="button button-small button-dark " ng-style="continueStyle"  >Continuar</button>
+                        <i class="icon ion-information-circled " ng-style="helpStyle" ng-click="changeToRegister()"> No tengo usuario </i>
+                        <i class="icon ion-information-circled " ng-style="noHelpStyle" ng-click="changeToLogin()"> Tengo usuario </i>
+                    </div>
+                     <div class="button-bar bar-dark"  style="position: absolute; top:86.5%;width: 94%; right: 3%">
+                          <a class="button icon  icon-left ion-social-facebook" ng-show="init10" ng-click="fblogin()" style="background: #3b5998;border-top-left-radius: 2px; border-bottom-left-radius: 2px; " ><span>Continuar con facebook</span></a>
+                       </div>
+                     <i class="icon ion-ios7-information inCenter sampleShowHide" ng-show="init15" style="color: #FFF; position: absolute; top:95.5%; left: 0%"> No publicaremos nada en tu muro</i>
+                </ion-content>
+            <!--</ion-slide>
+            <ion-slide>
+                 <ion-content class="first-screen" scroll="false" style="background-image: url('https://lh6.googleusercontent.com/-0OFBVGsCDpc/Ts5vhIRNPuI/AAAAAAAAJMc/EriRwqu2pb8/s402/HitchcockZoom_Micael_Reynaud.gif')" >
+                  <img class="inCenter" src="img/bilik-complete-2.png" style="top:10%; right: 20%; position: absolute; width: 40%">
+                   <div class="row inLarge" style="color :#FFF; font-size: large;top:30%; position: absolute">
+                       <div class="col" >
+                        <span> Sign in and start selling</span>
+                        <p> or swipe left to buy</p>
+                       </div>
+                   </div>
+
+                   <div class="padding">
+                       <div class="list list-inset" style="margin-top: 71%;">
+                        <label class="item item-input" ng-style="nameStyle">
+                            <input type="text" placeholder="First and last name">
+                          </label>
+                          <label class="item item-input">
+                            <input type="text" placeholder="Email">
+                          </label>
+                          <label class="item item-input" ">
+                            <input type="text" placeholder="Password"  >
+                          </label>
+                        </div>
+                        <button class="button button-small button-dark " ng-style="continueStyle"  >Continuar</button>
+                        <i class="icon ion-information-circled " ng-style="helpStyle" ng-click="changeToRegister()"> No tengo usuario </i>
+                        <i class="icon ion-information-circled " ng-style="noHelpStyle" ng-click="changeToLogin()"> Tengo usuario </i>
+                       <div class="button-bar bar-dark"  style="position: absolute; top:89.5%;width: 94%; right: 3%" >
+                          <button class="button icon icon-left ion-social-facebook-outline" ng-click="fbsell()" style="background: #3b5998;border-top-left-radius: 2px; border-bottom-left-radius: 2px; " ><span>Continuar con facebook</span></button>
+                       </div>
+                        
+                    </div>
+                     <i class="icon ion-ios7-information inCenter" style="color: #FFF; position: absolute; top:100.5%; left: 0%"> No publicaremos nada en tu muro</i>
+ 
+                </ion-content>
+            </ion-slide>
+        </ion-slide-box>-->
+    
+    </script>
+
+    
+    
+    <script id="modal-product-2.html" type="text/ng-template" >
+        <ion-modal-view class="import-modal">
+        
+        <ion-content has-bouncing="false" ng-style="backContent" style="background: url(http://subtlepatterns.com/patterns/skulls.png); background-repeat: repeat">
+            <div class="allContent" >
+           <br><br>
+             <div class="row" ng-click="closeModal()">
+                <i class="icon ion-close"></i>
+            </div>
+            
+            <div class="row " style="text-align: center">
+                <span class="col" style="font-family: Brandon Printed One; font-size: 34px">{{selectedCard.rotulo}}</span>
+            </div>
+            <br>
+            <div class="row " style="text-align: center">
+                <span class="col" style="font-family: 'Trend Ornaments'; font-size: 60px">W</span>
+            </div>
+            <div class="row " style="text-align: center">
+                <div class="col">
+                    <span style="font-family: 'Trend Ornaments'; font-size: 24px">4</span>
+                    <span style="font-family: 'Trend Slab Four Italic'; font-size: 24px">${{selectedCard.precio}}</span>
+                    <span style="font-family: 'Trend Ornaments'; font-size: 24px">5</span>
+                </div>
+            </div>
+            <div class="row " style="text-align: center">
+                <div class="col">
+                    <span style="font: 100%/1.75 'Courier New', Courier, monospace; font-size: 16px">{{selectedCard.producto.descripcion}}</span>
+                </div>
+            </div>
+            <div class="row " ng-if="selectedCard.producto.imagen.length == 5">
+                <div class="col col-50" style="">
+                    <img ng-src="{{selectedCard.producto.imagen[0]}}" style="width: 100%">
+                </div>
+                <div class="col col-50">
+                    <div class="row">
+                        <div class="col col-50" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[1]}}" style="width: 100%">
+                        </div>
+                        <div class="col col-50" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[2]}}" style="width: 100%">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[3]}}" style="width: 100%">
+                        </div>
+                        <div class="col col-50" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[4]}}" style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row " ng-if="selectedCard.producto.imagen.length == 4">
+                <div class="col col-50" style="">
+                    <img ng-src="{{selectedCard.producto.imagen[0]}}" style="width: 100%">
+                </div>
+                <div class="col col-50">
+                    <div class="row">
+                        <div class="col" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[1]}}" style="width: 100%">
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col col-50" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[2]}}" style="width: 100%">
+                        </div>
+                        <div class="col col-50" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[3]}}" style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row " ng-if="selectedCard.producto.imagen.length == 3">
+                <div class="col col-50" style="">
+                    <img ng-src="{{selectedCard.producto.imagen[0]}}" style="width: 100%">
+                </div>
+                <div class="col col-50">
+                    <div class="row">
+                        <div class="col" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[1]}}" style="width: 100%">
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col" style="">
+                            <img ng-src="{{selectedCard.producto.imagen[2]}}" style="width: 100%">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row " ng-if="selectedCard.producto.imagen.length == 2">
+                <div class="col col-50" style="">
+                    <img ng-src="{{selectedCard.producto.imagen[0]}}" style="width: 100%">
+                </div>
+                <div class="col col-50">
+                   <img ng-src="{{selectedCard.producto.imagen[1]}}" style="width: 100%" >
+                </div>
+            </div>
+            <div class="row " ng-if="selectedCard.producto.imagen.length == 1">
+                <div class="col" style="">
+                    <img ng-src="{{selectedCard.producto.imagen[0]}}" style="width: 100%">
+                </div>
+               
+            </div>
+            <div>
+                <div class="fakeContent" ng-style="fakeContent">
+                    <div ng-bind-html="content">
+                    </div>
+                </div>
+            </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+     <script id="modal-locations.html" type="text/ng-template">
+        <ion-modal-view class="import-modal" style="margin-top: 20px;">
+        <ion-header-bar align-title="center" class="bar-positive neoBilik" style="background: #f7f7f7; border-bottom: 1px solid #84B06D ">
+            
+             <h1 class="title fontDetails"   style="color: #555; font-weight: 200">UBICACIONES</h1>
+            <div class="buttons">
+                <button class="button button-clear" ng-click="closeLocations()">OK</button>
+            </div>
+            
+           
+        </ion-header-bar>
+        <ion-content has-bouncing="false" style="margin-top: -2px;">
+        
+        <ion-list scroll="false" 
+                    animation="fade-out"
+                    delete-icon="icon ion-minus-circled">
+        <ion-item ng-repeat="loc in myLoc" nav-clear ng-click="openPicture('http://maps.google.com/maps/api/staticmap?center={{loc.lat}},{{loc.long}}&zoom=17&size=300x300&maptype=roadmap&markers={{loc.lat}},{{loc.long}}&sensor=false')"   class="item item-thumbnail-left">
+              <img src="http://maps.google.com/maps/api/staticmap?center={{loc.lat}},{{loc.long}}&zoom=17&size=300x300&maptype=roadmap&markers={{loc.lat}},{{loc.long}}&sensor=false">
+              <h2 style="color: #0089ba">{{loc.name}}</h2>
+              <p style="color: #AAA; font-weight: 600;">{{loc.lat}},{{loc.long}}</p>
+              <p style="color: #BBD46E; font-weight: 300;">Ubicacion actual</p>
+        </ion-item>
+        <ion-item ng-repeat="loc in usuario.ubicacion track by $index" nav-clear can-delete="true" can-swipe="true" ng-click="openPicture('http://maps.google.com/maps/api/staticmap?center={{loc.lat}},{{loc.long}}&zoom=17&size=300x300&maptype=roadmap&markers={{loc.lat}},{{loc.long}}&sensor=false')"   class="item item-thumbnail-left">
+              <img src="http://maps.google.com/maps/api/staticmap?center={{loc.lat}},{{loc.long}}&zoom=17&size=300x300&maptype=roadmap&markers={{loc.lat}},{{loc.long}}&sensor=false">
+              <h2 style="color: #0089ba">{{loc.name}}</h2>
+              <p style="color: #AAA; font-weight: 600;">{{loc.lat}},{{loc.long}}</p>
+          <ion-option-button class="button-assertive" ng-click="deleteLocation($index)" style="line-height: 5.5;">
+          Eliminar
+        </ion-option-button>
+        </ion-item>
+        <ion-item nav-clear   style="display: inline-flex;">
+          <input type="text"  placeholder="Calle" ng-model="located.street" focus-me>
+           <input type="number" placeholder="Numero" ng-model="located.number">
+           
+        </ion-item>
+         <ion-item nav-clear   class="item-icon-left" ng-if="user.locs.length < 2 || !user.locs" ng-click="addLocation()"  >
+           <i class="icon ion-ios7-navigate config-icon" ng-class="{giroAnimation: localiz == true}"></i>
+           <h2 style="color: #0089ba"  ng-if="!located.street.length>0 || !located.number>0" >Localizarme</h2><h2 style="color: #0089ba" ng-if="located.street.length>0 && located.number>0 ">Agregar</h2>
+           
+        </ion-item>
+       
+        
+        
+        </ion-list>
+            
+        </ion-content>
+    </ion-modal-view>
+    </script>
+    
+      <script id="modal-profile.html" type="text/ng-template">
+        <ion-modal-view class="import-modal" style="margin-top: 20px;">
+         <ion-header-bar align-title="center" class="bar-positive neoBilik" style="background: #f7f7f7; border-bottom: 1px solid #84B06D ">
+            
+             <h1 class="title fontDetails"   style="color: #555; font-weight: 200">CUENTA</h1>
+            <div class="buttons">
+                <button class="button button-clear" ng-click="closeProfile()">OK</button>
+            </div>
+        </ion-header-bar>
+        <ion-content has-bouncing="false" style="margin-top: -2px;">
+        
+          <ion-list scroll="false" 
+                    animation="fade-out"
+                    delete-icon="icon ion-minus-circled">
+            
+           <ion-item nav-clear can-delete="true" can-swipe="true" on-delete="disableFacebook()"   class="item-icon-left">
+              <i class="icon ion-social-facebook config-icon"></i>
+              <h2 style="color: #0089ba">Facebook</h2>
+              <p style="color: #AAA; font-weight: 600;" ng-if="usuario.idFacebook">{{usuario.nombre}} {{usuario.apellido}}</p>
+              <ion-option-button class="button-assertive" ng-click="edit(item)" style="line-height: 4.5;">
+              Desvincular
+            </ion-option-button>
+            </ion-item>
+            <ion-item nav-clear can-delete="true" can-swipe="true" on-delete="disableMercadoLibre()"   class="item-icon-left"  ng-click="loginmeli()">
+             <i class="icon ion-bag config-icon"></i>
+              <h2 style="color: #0089ba">Mercado Libre</h2>
+              <p style="color: #AAA; font-weight: 600;" ng-if="usuario.mercadolibre">{{usuario.mercadolibre.nickname}}</p><p style="color: #AAA; font-weight: 600;" ng-if="!usuario.mercadolibre">Haz click para vincular tu cuenta</p>
+            </ion-item>
+            <ion-item nav-clear can-delete="true" can-swipe="true" on-delete="disableAccount()"   class="item-icon-left">
+               <i class="icon ion-email config-icon"></i>
+              <h2 style="color: #0089ba">Email</h2>
+              <p style="color: #AAA; font-weight: 600;">Haz click para acceder con tu mail</p>
+            </ion-item>
+            <div class="item item-divider">
+                Informacion adicional
+            </div>
+              <ion-item nav-clear   style="padding-top: 2px; padding-bottom: 2px">
+              <input type="number" placeholder="Edad"  ng-model="configuraciones.edad" ng-change="changeOfUser('edad')">
+            </ion-item>
+             <ion-item nav-clear   style="padding-top: 2px; padding-bottom: 2px">
+              <input type="tel" placeholder="Telefono" ng-model="configuraciones.telefono" ng-change="changeOfUser('telefono')">
+            </ion-item>
+              <div class="item item-divider">
+                Notificaciones
+            </div>
+            <ion-toggle ng-model="configuraciones.compra" ng-change="changeOfUser('compra')" toggle-class="toggle-buy">Compra aceptada</ion-toggle>
+            <ion-toggle ng-model="configuraciones.mensaje"  ng-change="changeOfUser('mensaje')" toggle-class="toggle-buy">Nuevo mensaje</ion-toggle>
+          </ion-list>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+    
+     <script id="buy-step1.html" type="text/ng-template">
+     
+    <ion-header-bar align-title="center" class="bar-positive neoBilik" style="background: #f7f7f7; border-bottom: 1px solid #84B06D ">
+        <div class="buttons ">
+            <button id="options-panel" ng-click="to('buy-config');  hideLoading()" class="button button-icon icon ion-android-menu" ></button>
+       </div>
+            <h1 class="title fontDetails" ng-if="!searching.searchText ||  searching.searchText == ''"  style="color: #555"  ng-click="to('searching');  hideLoading()">{{backend.titulo}}</h1>
+             <h1 class="title fontDetails" ng-if="searching.searchText &&  searching.searchText != ''"  style="color: #555; font-weight: 200"  ng-click="to('searching');  hideLoading()">RESULTADOS</h1>
+             <!--<div class="button-bar ">
+                 <button class="button button-outline button-light " ng-click="to('searching');  hideLoading()"><span><i class="icon ion-search search-icon"></i>&nbsp;Buscar</span></button > 
+                       
+                
+             </div>-->
+        <div class="buttons " ng-if="orden.conversaciones >= 1 || orden.preguntas >= 1">
+            
+             <button id="chat-panel"  ng-click="to('buy-messages');  hideLoading()" class="button button-icon icon" ng-class="{'color-gray': orden.conversaciones == 1 || orden.preguntas == 1 , 'ion-android-drafts': orden.conversaciones == 1 || orden.preguntas == 1 , 'ion-android-mail': orden.conversaciones > 1 || orden.preguntas > 1}" >
+            
+            </button>
+        </div>
+         
+    </ion-header-bar>
+    
+    <div class="bar bar-loading bar-assertive" style="background: #84B06D; border-top: solid 1px #AAA; font-size: 16px; line-height: 4;font-family: 'Avenir 65 Medium';" ng-if="alert && alert != ''" >
+      <span class="alertClass" ng-bind-html="alert" >
+      </span>
+      
+    </div>
+    <!--<div class="bar bar-loading4  bar-assertive" ng-if="repeatFinished==true && searching.searchText && searching.searchText != ''"  style="background: #1aacc3">
+     <span style="float: left; white-space: nowrap;  width: 78%; overflow: hidden; text-overflow: ellipsis; text-align: center;padding: 0;" ngclick="openPopover($event); hideLoading()" >Resultados de <b>{{searching.searchText}}</b> a {{user.distance}} km</span>  <span  ng-click="deleteSearch()" style="float: right">| Cancelar </span>
+    </div>-->
+      <ion-content has-bouncing="false" scrollbar-x="false" scrollbar-y="false" title="Buyer" style="background: #f7f7f7" >
+          <td-cards>
+          <div >
+            <td-card  ng-repeat="card in cards " on-finish-render on-tap="openModalProduct($index)" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt, $index)" ng-class="{'buypressed': showBuyPressedF($index), 'nopepressed':showNopePressedF($index), 'card-5' : isZero($index), 'card-4' : isOne($index), 'card-3' : isTwo($index), 'card-2' : isThree($index), 'card-1' : isFour($index),  'card-hided': isMoreThanFive($index)}">
+             <div class="image" style="border-bottom: 2px solid #D6D6D6; background: #FFF" >
+                <div class="yes-text" ng-style="leftTextOpacity"   ng-class="{'no-show-text': ($index+1)!=(cards.length) || !haveTouched[$index]}">BUY</div>
+                <div class="seen-text" ng-if="youveseenthisproduct">You have seen this product before</div>
+                <div class="yes-text" ng-if="showBuyPressedF($index)" ng-style="pressedButtonLeft" >BUY</div>
+                <div class="pictureContainer" style="height:280px; text-align: center;white-space: nowrap; margin-right: 7px;">
+                    <span class="helper"></span>
+                    <img style="vertical-align: middle; " ng-src="{{card.imagen}}">
+                </div>
+                <div class="no-text" ng-style="rightTextOpacity" ng-class="{'no-show-text': ($index+1)!=(cards.length) || !haveTouched[$index]}">LATER</div>
+                <div class="no-text"  ng-if="showNopePressedF($index)" ng-style="pressedButtonRight">LATER</div>
+                </div>
+                <div class="row " >
+                         <span  style="font-family: 'Avenir 65 Medium'; color: #777; max-width: 71%; white-space: nowrap;; overflow: hidden; text-overflow: ellipsis; font-size: large">{{card.rotulo}}</span>, <span  style="font-size: large; color: #555; font-family: 'Avenir 65 Medium'">&nbsp; ${{card.precio}}</span>
+                </div>
+             
+            <div class="row cardIcons" style="color: #999; font-size: x-large; margin-top: 10px">
+                <div class="col col-25 makingCenter">
+                    <i class="icon ion-android-pin "></i>
+                </div>
+                <div class="col col-25 makingCenter" >
+                   <i ng-if="card.estado ==0 "class="icon ion-battery-charging "></i>
+                   <i ng-if="card.estado ==1 "class="icon ion-battery-half "></i>
+                </div>
+                <div class="col col-25 makingCenter" >
+                   <i class="icon ion-pie-graph "></i>
+                </div>
+                <div class="col col-25 makingCenter"  ng-style="friendsStyle">
+                     <i class="icon ion-android-contacts "></i>
+                </div>
+            </div>
+
+             <div class="row cardInfo">
+                <div class="col col-25 makingCenter ">
+                     <span>{{card.distancia}}km</span>
+                </div>
+                 <div class="col col-25 makingCenter">
+                     <p ng-if="card.estado <= 0" >Nuevo</p>
+                     <p  ng-if="card.estado == 1" >Usado</p>
+                     <p ng-if="card.estado >= 2" >Otro</p>
+                </div>
+                 <div class="col col-25 makingCenter" >
+                    <span class="rateNumber"  >7.5</span>
+                </div>
+                <div class="col col-25 makingCenter" ng-style="friendsStyle" >
+                 <span class="friendsNumber">{{card.idProducto}}</span>
+                </div>
+            </div>
+            </td-card>
+            </div>
+           <!--<div class="row tinder-buttons" ng-if="showTinderButtons">
+               <div class="col col-33 col-offset-33">
+                   <div class="button-bar tinder-bar">
+                        <a id="nope" class="button icon  ion-close-round button-light button-nope button-tinder" ng-class="{'activated':laterDown}" ng-click="laterProduct()"></a>
+                        <a id="info"  class="button icon  ion-information button-light button-info button-tinder" ng-click="openModalProduct()"></a>
+                        <a id="like"  class="button icon ion-heart button-light button-like button-tinder" ng-class="{'activated':likeDown}"  ng-click="likeProduct()"></a>
+                    </div>
+               </div>
+           </div>-->
+           <div class="row" ng-if="showTinderButtons" style="position: absolute; margin-top: 126%; left: 5%">
+               <div class="col-20" ng-if="searching.searchText && searching.searchText != ''">
+                    <a ng-class="{tinderClick: tinderDesSearch==true, tinderDesClick: tinderDesSearch==false}" style="padding: 0 !important" ng-click="deleteSearch()" class="button button-block button-light icon ion-close-circled btn-circle btn-lg cross-search"></a>
+                </div>
+                <div class="col-20" ng-if="!searching.searchText ||  searching.searchText == ''" style="padding: 0 !important">
+                    <a ng-class="{tinderClick: tinderSearch==true, tinderDesClick: tinderSearch==false}" ng-click="to('searching');  hideLoading()" class="button button-block button-light icon btn-search ion-search btn-circle btn-lg"></a>
+                </div>
+                <div class="col-33" style="margin-left: -1px;" >
+                <a ng-class="{tinderClick: tinderDesClick==true, tinderDesClick: tinderDesClick==false}" class="button button-block button-light icon ion-close-round btn-circle btn-xl cross-button"></a>
+                </div>
+                <div class="col-33" style="margin-left: -20px;" >
+                <a ng-class="{tinderClick: tinderClick==true, tinderDesClick: tinderClick==false}" class="button button-block button-light icon ion-android-favorite btn-circle btn-xl heart-button"></a>
+                </div>
+                <div class="col-20" style="margin-left: -24px">
+                <a style="padding: 0 !important" class="button button-block button-light icon btn-more ion-android-add btn-circle btn-lg"></a>
+                </div>
+           </div>
+           <div class="row tinder-buttons-fake" ng-if="showTinderButtons"  on-swipe-right="to('buy-config')"  on-swipe-left="to('buy-messages')" style="margin-top: 125%">
+                <div class="col" ng-if="searching.searchText && searching.searchText != ''"  ng-click="deleteSearch(); to('searching')" on-touch="desSearchTouch()" on-release="desSearchRelease()" >
+                    
+                </div>
+                <div class="col" ng-if="searching.searchText && searching.searchText != ''"  ng-click="deleteSearch(); to('searching')" on-touch="desSearchTouch()" on-release="desSearchRelease()">
+                    
+                </div>
+                <div class="col" ng-if="!searching.searchText ||  searching.searchText == ''" ng-click="to('searching');  hideLoading()" on-touch="searchTouch()" on-release="searchRelease()">
+                   
+                </div>
+                <div class="col" ng-if="!searching.searchText ||  searching.searchText == ''" ng-click="to('searching');  hideLoading()" on-touch="searchTouch()" on-release="searchRelease()">
+                   
+                </div>
+                <div class="col"  >
+                
+                </div>
+                <div class="col" ng-click="laterProduct()" on-touch="laterTouch()" on-release="laterRelease()" >
+                
+                </div>
+                <div class="col" ng-click=" laterProduct()"  on-touch="laterTouch()" on-release="laterRelease()">
+                
+                </div>
+                <div class="col" ng-click=" laterProduct()"  on-touch="laterTouch()" on-release="laterRelease()">
+                
+                </div>
+                 <div class="col" ng-click=" laterProduct()"  on-touch="laterTouch()" on-release="laterRelease()">
+                
+                </div>
+                <div class="col" ng-click="likeProduct()" on-touch="likeTouch()" on-release="likeRelease()">
+                
+                </div>
+                <div class="col" ng-click="likeProduct()" on-touch="likeTouch()" on-release="likeRelease()">
+                
+                </div>
+                <div class="col" ng-click="likeProduct()" on-touch="likeTouch()" on-release="likeRelease()">
+                
+                </div>
+                <div class="col" ng-click="likeProduct()" on-touch="likeTouch()" on-release="likeRelease()">
+                
+                </div>
+                
+                <div class="col" >
+                
+                </div>
+                 <div class="col" >
+                
+                </div>
+                
+           </div>
+           
+
+          </td-cards>
+          <div class="onLoading" ng-if="!showTinderButtons" >
+
+              <div class="row" id="loadingImage"  ontouch="onTouch()" onrelease="onRelease()" >
+                  <div  class="col col-33 col-offset-33" ng-class="{elementDesanimation: desTouche==true && touche == false, keepTouched: touche == true && desTouche == false && keepTouching == true}">
+                      <div  ng-style="imageStyleTinder" ng-click="badConnection()" >
+                      </div>
+                  </div>
+              </div>
+              <div class="row"  id="loadingText" style="z-index: 100; color: #777">
+                  <div class="col col-90 col-offset-5" ng-if="searchingOk">
+
+                      <p style=" text-align: center;padding: 0; font-size:medium;" ng-if="searching.searchText && searching.searchText != ''">Buscando <span style=" text-transform: lowercase">{{searching.searchText}}</span></p> <p style=" text-align: center;padding: 0;font-size:medium" ng-if="!searching.searchText || searching.searchText == ''">Buscando ofertas</p>
+                  </div>
+                  <div class="col col-90 col-offset-5" ng-if="!searchingOk">
+                      <p style=" text-align: center;padding: 0; font-size:medium" ng-if="searching.searchText && searching.searchText != ''">No existen {{searching.searchText}} en el rango elegido</p> <p style=" text-align: center;padding: 0;font-size:medium" ng-if="!searching.searchText || searching.searchText == ''">No hay mas ofertas en el rango elegido</p>
+                  </div>
+              </div>
+
+              <div class="row"  id="buttonToSeller" ng-if="!searchingOk">
+                  <div class="col col-90 col-offset-5">
+                      <p style=" text-align: center;padding: 0;">¿Tenes algo para vender?</p>
+                      <a class="button button-block" ng-click="toTab('seller', 2)" style="background: #0089ba;border-radius: 5px;color: #FFF; font-weight:500; border: none" ><p>
+                          Crear una publicacion gratis!
+                      </p></a>
+                  </div>
+              </div>
+          </div>
+      </ion-content>
+      
+    </script>
+   
+    <script id="buy-config.html" type="text/ng-template" >
+    
+        <ion-header-bar align-title="center" class="bar-positive neoBilik"  style="background: #f7f7f7; border-bottom: 1px solid #84B06D ">
+            <h1 class="title fontDetails" style="color: #555; font-weight: 200;">CONFIGURACIONES</h1>
+            <div class="buttons">
+                <button class="button button-clear icon ion-ios7-arrow-right" ng-click="to('buy-step1')"></button>
+            </div>
+        </ion-header-bar>
+        <ion-content class="has-header" style="background: #f7f7f7;margin-top:-2px;" has-bouncing="false">
+          <ion-list>
+               <ion-item nav-clear   class="item-avatar" style="padding-bottom: 0">
+              <i class="icon ion-compass config-icon"></i>
+              <h2 style="color: #0089ba">Distance: <b>{{distancia.km}}</b>km</h2>
+              <p style="color: #AAA" class="range-buy"><input type="range" style="width:100%; margin: 0" name="distance" id="distance" min="0.1" max="20" value="{{distancia.km}}" ng-change="changeDistance()" ng-model="distancia.km" step="0.1"></p>
+            </ion-item>
+            <ion-item nav-clear   class="item-avatar" ng-click="openModalProfile()">
+              <i class="icon ion-person config-icon"></i>
+              <h2 style="color: #0089ba">Gestionar cuenta</h2>
+              <p style="color: #AAA; font-weight: 600;">Notificaciones, perfil y mas</p>
+            </ion-item>
+            <ion-item nav-clear   class="item-avatar" ng-click="openModalLocations()">
+              <i class="icon ion-android-earth config-icon"></i>
+              <h2 style="color: #0089ba">Ubicaciones</h2>
+              <p style="color: #AAA; font-weight: 600;">Editar, borrar y agregar.</p>
+            </ion-item>
+             <ion-item nav-clear   class="item-avatar" ng-click="createPublication()">
+              <i class="icon ion-compose earth config-icon"></i>
+              <h2 style="color: #0089ba">Vender un producto</h2>
+              <p style="color: #AAA; font-weight: 600;">Quiero crear una publicacion</p>
+            </ion-item>
+            <br>
+            <br>
+            <ion-item nav-clear ng-click="logout()"   class="item-avatar">
+              <i class="icon ion-android-hand config-icon"></i>
+              <h2 style="color: #0089ba">Cerrar sesion</h2>
+              <p style="color: #AAA; font-weight: 600;">Siempre seras bienvenido!</p>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+
+    </script>  
+
+    <script id="buy-messages.html" type="text/ng-template" >
+    <style>
+    @font-face {
+  font-family: "untitled-font-2";
+  src:url("https://fontastic.s3.amazonaws.com/wwoACYWqWFH9ZTsbKHYdAR/fonts/1426267537.eot");
+  src:url("https://fontastic.s3.amazonaws.com/wwoACYWqWFH9ZTsbKHYdAR/fonts/1426267537.eot?#iefix") format("embedded-opentype"),
+    url("https://fontastic.s3.amazonaws.com/wwoACYWqWFH9ZTsbKHYdAR/fonts/1426267537.woff") format("woff"),
+    url("https://fontastic.s3.amazonaws.com/wwoACYWqWFH9ZTsbKHYdAR/fonts/1426267537.ttf") format("truetype"),
+    url("https://fontastic.s3.amazonaws.com/wwoACYWqWFH9ZTsbKHYdAR/fonts/1426267537.svg#1426267537") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "untitled-font-2" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "untitled-font-2" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-docs:before {
+  content: "a";
+}
+    </style>
+        <ion-header-bar align-title="center" class="bar-positive neoBilik"    style="background: #f7f7f7; border-bottom: 1px solid #84B06D ">
+        <div class="buttons">
+            <button class="button button-clear icon-docs" ng-click="to('buy-step1')" style="font-size: x-large;"></button>
+        </div>
+        <h1 class="title fontDetails" style="color: #555; font-weight: 200;">PEDIDOS</h1>
+         <div class="buttons">
+         
+            <button class="button button-clear icon" ng-class="{'ion-loop': !loadAgain, 'ion-looping': loadAgain}" ng-click="loadAgainF()"></button>
+
+        </div>
+        </ion-header-bar>
+        <div class="bar bar-subheader" ng-if="orden.value.conversaciones >= 1 && orden.value.conversaciones >= 1">
+        <div class="button-bar">
+          <a class="button" ng-class="{'activated' : !selected}" ng-click="selected = false" ng-if="orden.value.conversaciones >= 1">ordenes</a>
+          <a class="button" ng-class="{'activated' : selected}" ng-click="selected = true" ng-if="orden.value.preguntas >=1" >preguntas</a>
+
+        </div>
+      </div>
+        <ion-content style="background: #f7f7f7">
+             <div class="list" ng-if="orden.value[0].tarjeta">
+                   <a class="item item-avatar item-icon-right" ng-repeat="item in orden.value" ng-if="!selected">
+                      <img ng-src="{{item.tarjeta.imagen}}" style="border-radius: 0px; margin-top:6px" >
+                      <div ng-click="toChat('{{item.idConversacion}}')">
+                          <h2 style="margin-top: -9px">{{item.tarjeta.rotulo}}</h2>
+                          <p><b>Vendedor:</b> <span>{{item.vendedor.nombre}} {{item.vendedor.apellido}}</span></p>
+                          <p style="margin-top: -13px"><b>Precio:</b> <span> $ {{item.tarjeta.precio}}</span></p>
+                          <p style="margin-top: -15px"><span ng-bind-html="ultimoMensaje"></span></p>
+                      </div>
+                      <button ng-click="showSheetApproved('{{item.idConversacion}}', '{{item.vendedor.nombre}}')" class="button icon pull-right button-icon ion-more"></button>
+                  </a>
+                  <a class="item item-avatar item-icon-right" ng-repeat="item in orden.value" ng-if="selected">
+                      <img ng-src="{{item.tarjeta.imagen}}" style="border-radius: 50px" >
+                      <div ng-click="toChat('{{item.idVendedor}}')">
+                          <h2 style="margin-top: -7px">{{item.tarjeta.rotulo}}</h2>
+                          <p ><b>Vendedor:</b> <span >{{item.vendedor.nombre}} {{item.vendedor.apellido}}</span></p>
+                          <p style="margin-top: -11px"><b>Precio:</b> <span> ${{item.tarjeta.precio}}</span></p>
+                      </div>
+                      <button ng-click="showSheetApproved('{{item.idVendedor}}', '{{item.tarjeta.idProducto}}')" class="button icon pull-right button-icon ion-more"></button>
+                  </a>
+             </div>
+        </ion-content>
+    </script>
+    
+    <script id="refine.html" type="text/ng-template" >
+      <ion-popover-view class="refine-modal">
+        <ion-content>
+            <div class="list">
+            
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Shipping
+                </div>
+                <select>
+                  <option selected>All</option>
+                  <option>Free</option>
+                  <option>Max: $50</option>
+                  <option>Max: $100</option>
+                </select>
+              </label>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Category
+                </div>
+                <select>
+                 <option selected>Choose category</option>
+                  <option>Category 1</option>
+                  <option>Category 2</option>
+                  <option>Category 3</option>
+                </select>
+              </label>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Condition
+                </div>
+                <select>
+                 <option selected>All</option>
+                  <option>Totally new</option>
+                  <option>New other</option>
+                  <option>Used</option>
+                </select>
+              </label>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Price
+                </div>
+               <div class="item item-input-inset" style="border: none">
+                <label class="item-input-wrapper">
+                  <input type="number" class="min-input" placeholder="Min">
+                </label>
+                &nbsp;-&nbsp;
+               <label class="item-input-wrapper">
+                  <input type="number" class="max-input" placeholder="Max">
+                </label>
+              </div>
+              </label>
+             
+            </div>
+        </ion-content>
+      </ion-popover-view>
+</script>
+  <script id="searching.html" type="text/ng-template" > 
+        <ion-header-bar align-title="center" class="bar-positive neoBilik" style="background: #f7f7f7; border-bottom: 1px solid #84B06D ">
+            <h1 class="title fontDetails" style="color: #555; font-weight: 200"  ng-click="to('searching');  hideLoading()">BUSQUEDA</h1>
+            <div class="buttons">
+                <button class="button button-clear icon ion-ios7-arrow-right" ng-click="to('buy-step1')"></button>
+            </div>
+        </ion-header-bar>
+        <ion-content class="has-header" has-bouncing="false"  style="background: #f7f7f7; margin-top:0px;" >
+         <div class="list">
+          <div class="item item-input-inset" style="border-top: 0">
+            <label class="item-input-wrapper">
+              <input type="search" ng-enter="searchFrom('{{texti.t}}')" ng-model="texti.t" ng-focus="focusInput()" ng-blur="blurInput()" placeholder="Buscar en Bilik">
+            </label>
+            <button class="button button-clear" ng-click="searchFrom('{{texti.t}}')"  ng-style="searchStyle">
+                Buscar
+            </button>
+          </div>
+           <div ng-if="searchs && searchs.length>0" class="item item-divider fontDetails bigBefore">
+                <span ng-style="notSendStyle"> Ultimas busquedas &nbsp;&nbsp;<i class=" icon ion-ios7-trash pull-right"  ng-click="deleteSearchs()"></i></span>  <span ng-style="sendStyle" >Tendencias</span>
+             </div>
+              <a ng-style="notSendStyle" class="item" ng-repeat="search in searchs" ng-click="searchFrom('{{search.text}}')">
+                {{search.text}}
+              </a>
+             
+                <a ng-style="sendStyle" class="item" ng-repeat="search in tops" ng-click="searchFrom('{{search.text}}')">
+                {{search.text}}
+                </a>
+             
+        
+        <div class="item item-divider fontDetails" ng-if="!searchs || !searchs.length>0" >
+                 <span >Tendencias</span>
+             </div>
+        <a class="item" ng-if="!searchs || !searchs.length>0 && firebaseSearchFailed" ng-repeat="search in tops" ng-click="searchFrom('{{search.text}}')">
+                {{search.text}}
+        </a>
+             
+        </div>
+        </ion-content>
+    </script>  
+
+<script id="modal-picture.html" type="text/ng-template">
+    <button style="font-size: xx-large;position: absolute; top: 23.5%; left: -2%; z-index: 10000; color: #FFF" class="button button-icon ion-ios7-close" ng-click="closeMe()"></button>
+    <div class="center">
+    <img ng-src="{{imageURL}}" style="width: 100%; position: absolute; top: 25%; left: 0%">
+     </div>
+</script>
+<script id="modal-live.html" type="text/ng-template">
+    <button style="font-size: xx-large;position: absolute; top: 23.5%; left: -2%; z-index: 10000; color: #FFF" class="button button-icon ion-ios7-close" ng-click="closeLive()"></button>
+    <button style="font-size: xx-large;position: absolute; top: 48%; left: 3.5%; z-index: 10000; color: #FFF" class="button button-icon ion-chevron-left" ng-click="moveLeft()"></button>
+    <div class="center">
+    <img on-swipe-right="moveLeft()" on-swipe-left="moveRight()"ng-src="{{imageURL}}{{heading}}{{headingValue}}" style="width: 100%; position: absolute; top: 25%; left: 0%">
+     </div>
+    <button style="font-size: xx-large;position: absolute; top: 48%; left: 87.1%; z-index: 10000; color: #FFF" class="button button-icon ion-chevron-right" ng-click="moveRight()"></button>
+</div>
+</script>
+
+<script id="buy-chat.html" type="text/ng-template">
+    <ion-header-bar align-title="center" class="bar-positive neoBilik" style="background: #f7f7f7; border-bottom: 1px solid #84B06D; position:fixed !important">
+   
+       <div class="buttons">
+            <button class="button button-clear icon ion-ios7-arrow-left" ng-click="to('buy-messages')" >Volver</button>
+        </div>
+        <h1 class="title " ng-style="userChatStyle" ng-if="userChatStyle">{{vendedor.nombre}} {{vendedor.apellido}}</h1>
+        <h2 class="title" ng-style="userStatusStyle" ng-if="userStatusStyle" >{{dameCuando(vendedor.estado)}}</h2>
+        <div class="buttons">
+            <img ng-src="{{vendedor.imagen}}" style="border-radius: 50px; width: 36px; height: 36px"  >
+        </div>
+      </ion-header-bar>
+      <ion-content  class="has-header has-footer padding" style="background: #FFF" delegate-handle="theScroll">
+        <ol class="messages">
+          <li ng-repeat="message in chats"  ng-class="{me: whoWas(message)}" ng-bind-html="message.content"></li>
+          
+    	</ol>
+      </ion-content>
+      <ion-footer-bar>
+        <label class="item-input-wrapper">
+              <input type="text" ng-enter="add()" id="inputMessage" style="background: #EEE" ng-model="textMessage"  ng-focus="focusInput()" ng-blur="blurInput()" placeholder="Enter your message">
+        </label>
+         <button ng-click="add()" class="button button-small button-clear button-positive" ng-style="sendStyle">
+          Enviar
+        </button>
+       
+      </ion-footer-bar>
+  
+
+</script>
+
+  </body>
+</html>
+
+
+
